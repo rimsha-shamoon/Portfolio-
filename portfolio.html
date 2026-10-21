@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rimsha Shamoon – Computer Science Student Portfolio</title>
+<meta name="description" content="Portfolio of Rimsha Shamoon, BS Computer Science student in Lahore looking for an IT internship.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F2F4FB;
+  --surface:#FFFFFF;
+  --ink:#1A1D3A;
+  --muted:#565A7A;
+  --line:#D9DDEF;
+  --accent:#3A4FE0;
+  --accent-soft:#E3E7FF;
+  --sun:#FFC83D;
+  --code-bg:#1A1D3A;
+  --head:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.65;font-size:1.0625rem;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{width:min(1080px,100% - 2.5rem);margin-inline:auto}
+
+/* nav */
+header.nav{position:sticky;top:0;z-index:10;background:rgba(242,244,251,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:.85rem;gap:1rem;flex-wrap:wrap}
+.logo{font-family:var(--head);font-weight:800;font-size:1.2rem;text-decoration:none}
+.nav ul{display:flex;gap:1.25rem;list-style:none;flex-wrap:wrap}
+.nav ul a{text-decoration:none;color:var(--muted);font-weight:500;font-size:.95rem}
+.nav ul a:hover{color:var(--accent)}
+
+/* hero */
+.hero{padding-block:clamp(3rem,8vw,6rem)}
+.hero .wrap{display:block}
+.hero h1{font-family:var(--head);font-weight:800;font-size:clamp(3rem,10vw,6.5rem);line-height:.98;letter-spacing:-.03em}
+.hero .role{margin-top:1.25rem;font-size:1.3rem;color:var(--muted);max-width:40ch}
+.hero .role strong{color:var(--ink)}
+.cta{display:flex;gap:.75rem;margin-top:2rem;flex-wrap:wrap}
+.btn{display:inline-block;padding:.8rem 1.4rem;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid var(--ink);transition:transform .15s,background .15s}
+.btn.primary{background:var(--ink);color:#fff}
+.btn.primary:hover{background:var(--accent);border-color:var(--accent)}
+.btn.ghost:hover{background:var(--sun);border-color:var(--ink)}
+.btn:active{transform:translateY(1px)}
+
+
+/* sections */
+section{padding-block:clamp(2.5rem,6vw,4.5rem)}
+h2{font-family:var(--head);font-weight:800;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.02em;line-height:1.1;margin-bottom:1.5rem}
+.about{border-top:1px solid var(--line)}
+.about .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:3rem}
+.about p{max-width:62ch;color:var(--muted)}
+.about p+p{margin-top:1rem}
+.about p strong{color:var(--ink)}
+
+.skills .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.6rem}
+.card h3{font-family:var(--head);font-size:1.3rem;margin-bottom:.5rem}
+.card p{color:var(--muted);font-size:.98rem}
+.card .tag{display:inline-block;margin-bottom:1rem;padding:.2rem .7rem;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:700;font-size:.82rem}
+.card.lead{background:var(--ink);color:#fff;border-color:var(--ink)}
+.card.lead p{color:#C8CBEA}
+.card.lead .tag{background:var(--sun);color:var(--ink)}
+
+.project .box{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:clamp(1.5rem,4vw,2.5rem);display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
+.project h3{font-family:var(--head);font-size:1.6rem;margin-bottom:.4rem}
+.project .lang{font-family:var(--mono);font-size:.85rem;color:var(--accent)}
+.project p{color:var(--muted);margin-top:1rem}
+.project ul{list-style:none;display:grid;gap:.9rem;align-content:start}
+.project li{padding-left:1.7rem;position:relative}
+.project li::before{content:"";position:absolute;left:0;top:.55em;width:.7rem;height:.7rem;border-radius:3px;background:var(--sun);border:2px solid var(--ink)}
+
+.edu .row{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:flex-end;border-top:2px solid var(--ink);padding-top:1.5rem}
+.edu h3{font-family:var(--head);font-size:1.5rem}
+.edu p{color:var(--muted)}
+.cgpa{font-family:var(--head);font-weight:800;font-size:3.2rem;line-height:1}
+.cgpa small{display:block;font-family:var(--body);font-weight:500;font-size:.9rem;color:var(--muted);margin-top:.3rem}
+
+.contact{background:var(--ink);color:#fff;border-radius:28px 28px 0 0;margin-top:2rem}
+.contact h2{color:#fff}
+.contact p{color:#C8CBEA;max-width:52ch}
+.links{display:grid;gap:.8rem;margin-top:1.75rem;max-width:420px}
+.links a{display:flex;justify-content:space-between;gap:1rem;padding:1rem 1.2rem;border:1.5px solid #4A4F85;border-radius:14px;text-decoration:none;font-weight:500;transition:background .15s,border-color .15s}
+.links a:hover{background:var(--accent);border-color:var(--accent)}
+.links span{color:#A9AEDB}
+.links a:hover span{color:#fff}
+footer{background:var(--ink);color:#8C91C4;text-align:center;font-size:.85rem;padding:1.5rem 1rem 2rem}
+
+@media (max-width:820px){
+  .about .wrap,.project .box{grid-template-columns:1fr}
+  .skills .grid{grid-template-columns:1fr}
+  .about .wrap{gap:0}
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#12142B;--surface:#1B1E3D;--ink:#EEF0FF;--muted:#A9AEDB;--line:#2F3363;--accent:#8FA2FF;--accent-soft:#2A2F66;--code-bg:#0B0D20}
+  header.nav{background:rgba(18,20,43,.9)}
+  .btn.primary{background:var(--ink);color:#12142B}
+  .btn.primary:hover{background:var(--sun);border-color:var(--sun);color:#12142B}
+  .card.lead{background:#2A2F66;border-color:#2A2F66;color:#fff}
+  .card.lead .tag{color:#12142B}
+  .project li::before{border-color:var(--ink)}
+  .contact,footer{background:#0B0D20}
+  .btn.ghost:hover{color:#12142B}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top">Rimsha Shamoon</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#project">Project</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Rimsha Shamoon</h1>
+        <p class="role"><strong>BS Computer Science student</strong> in Lahore, learning to code in C++ and looking for an IT internship.</p>
+        <div class="cta">
+          <a class="btn primary" href="#contact">Get in touch</a>
+          <a class="btn ghost" href="#project">See my project</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap">
+      <h2>About me</h2>
+      <div>
+        <p>I'm a <strong>BS Computer Science student at Superior University Lahore</strong>, currently in my 3rd semester with a CGPA of 3.34. I'm interested in technology and programming, and my main coursework so far has been Object-Oriented Programming (OOP).</p>
+        <p>Outside of code, I create designs in Canva and run a YouTube channel with different types of content. I'm now looking for an <strong>IT internship</strong> where I can get practical experience and learn from experienced professionals.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="skills" id="skills">
+    <div class="wrap">
+      <h2>What I work with</h2>
+      <div class="grid">
+        <article class="card lead">
+          <span class="tag">Programming</span>
+          <h3>C++</h3>
+          <p>Used for my academic project and OOP coursework, applying programming concepts to build a working program.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Design</span>
+          <h3>Canva</h3>
+          <p>Digital designs with different layouts and color combinations for visual content.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Content</span>
+          <h3>YouTube</h3>
+          <p>Creating and managing a channel, from making content to publishing it online.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="project" id="project">
+    <div class="wrap">
+      <h2>Academic project</h2>
+      <div class="box">
+        <div>
+          <h3>Student Management System</h3>
+          <span class="lang">C++</span>
+          <p>A C++ program that stores and manages student records, built as an academic project.</p>
+        </div>
+        <ul>
+          <li>Organizes student information through a computer program.</li>
+          <li>Applies the programming concepts learned in class to finish the project.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="edu" id="education">
+    <div class="wrap">
+      <h2>Education</h2>
+      <div class="row">
+        <div>
+          <h3>Bachelor of Science in Computer Science</h3>
+          <p>Superior University, Lahore · 3rd semester</p>
+          <p>Main course: Object-Oriented Programming (OOP)</p>
+        </div>
+        <div class="cgpa">3.34<small>Current CGPA</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <h2>Let's talk about an internship</h2>
+      <p>I'd love to hear about IT internship openings. Email me or call, and I'll reply as soon as I can.</p>
+      <div class="links">
+        <a href="mailto:rimshashamoon5@gmail.com">Email <span>rimshashamoon5@gmail.com</span></a>
+        <a href="tel:03710713425">Phone <span>0371 0713425</span></a>
+        <a href="https://www.google.com/maps/search/Lahore,+Pakistan" target="_blank" rel="noopener">Location <span>Lahore, Pakistan</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>© 2026 Rimsha Shamoon</footer>
+</body>
+</html>
